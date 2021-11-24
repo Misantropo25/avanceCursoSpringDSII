@@ -9,5 +9,8 @@ import java.util.List;
 public interface IRolService {
    //Su objetivo es la exposicion de ciertos metodos que ya estan implementados en el DAO y si no estan, se implementan
    public List<Rol> findAll();
+   public Rol findById(Long id);
+   public Rol save(Rol rol);
+   public void delete(Long id);
 
 }

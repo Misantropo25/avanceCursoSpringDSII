@@ -20,4 +20,23 @@ public class RolServiceImpl implements IRolService { //Debo tener una implementa
         return (List<Rol>) rolDao.findAll(); //Este metodo no es null porque autowired nos permite el enlace //esta linea ya es una transaccion
         //En caso de que necesitemos usar mas metodos seria factible usar @Transactional(readOnly = false) para que sea transactional, si se realiza escritura o manipulacion a nivel transaccional es readOnly = False
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Rol findById(Long id) {
+        return rolDao.findById(id).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public Rol save(Rol rol) {
+        return rolDao.save(rol);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Long id) {
+        rolDao.deleteById(id);
+    }
+
 }
